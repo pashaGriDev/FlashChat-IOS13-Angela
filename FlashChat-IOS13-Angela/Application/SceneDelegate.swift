@@ -15,7 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let welcomViewController = UIViewController(nibName: "WelcomViewController", bundle: nil)
+//        let bundle = Bundle(for: WelcomViewController.self)
+//        let welcomViewController = WelcomViewController(nibName: "WelcomViewController", bundle: bundle)
+        let welcomViewController = WelcomViewController()
         window?.rootViewController = UINavigationController(rootViewController: welcomViewController)
         window?.makeKeyAndVisible()
     }

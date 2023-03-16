@@ -8,22 +8,44 @@
 import UIKit
 
 class WelcomViewController: UIViewController {
-
+    
+    @IBOutlet weak var logoLabel: UILabel!
+    @IBOutlet var authButtons: [UIButton]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        logoLabel.text = "Flash⚡️Chat"
+        appearanceAuthButton()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // уточнить почему не вызывается этот метод
+        print("awakeFromNib")
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func moveButtonPressed(_ sender: UIButton) {
+        switch sender.tag {
+        case 0:
+            let registerViewController = RegisterViewController()
+            navigationController?.pushViewController(registerViewController, animated: true)
+        case 1:
+            let loginViewController = LoginViewController()
+            navigationController?.pushViewController(loginViewController, animated: true)
+        default:
+            break
+        }
     }
-    */
+}
 
+extension WelcomViewController {
+    /// устанавливает радиус и устанавливает таг равный индексу в массиве
+    func appearanceAuthButton() {
+        let buttonHeigth = authButtons.first?.frame.height ?? 0
+        let radius = buttonHeigth / 2
+        authButtons.enumerated().forEach { (index, button) in
+            button.layer.cornerRadius = radius
+            button.tag = index
+        }
+    }
 }
