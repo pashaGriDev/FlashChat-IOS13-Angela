@@ -23,5 +23,8 @@ class RegisterViewController: UIViewController {
         let email = emailTextField.text ?? "not value"
         let password = passwordTextField.text ?? "not value"
         print("\(email) : \(password)")
+        
+        let chatViewController = ChatViewController()
+        navigationController?.pushViewController(chatViewController, animated: true)
     }
 }

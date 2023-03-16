@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1028549B29C37E1000AB0543 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1028549A29C37E1000AB0543 /* GoogleService-Info.plist */; };
+		1028549E29C3804000AB0543 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1028549D29C3804000AB0543 /* FirebaseAuth */; };
+		102854A029C3804000AB0543 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1028549F29C3804000AB0543 /* FirebaseFirestore */; };
 		10703D7A29C0DE8C000EAAA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10703D7929C0DE8C000EAAA0 /* AppDelegate.swift */; };
 		10703D7C29C0DE8C000EAAA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10703D7B29C0DE8C000EAAA0 /* SceneDelegate.swift */; };
 		10703D8329C0DE8E000EAAA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10703D8229C0DE8E000EAAA0 /* Assets.xcassets */; };
@@ -23,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1028549A29C37E1000AB0543 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10703D7629C0DE8C000EAAA0 /* FlashChat-IOS13-Angela.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FlashChat-IOS13-Angela.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10703D7929C0DE8C000EAAA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10703D7B29C0DE8C000EAAA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1028549E29C3804000AB0543 /* FirebaseAuth in Frameworks */,
+				102854A029C3804000AB0543 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +85,7 @@
 				10703D8229C0DE8E000EAAA0 /* Assets.xcassets */,
 				10703D8429C0DE8E000EAAA0 /* LaunchScreen.storyboard */,
 				10703D8729C0DE8E000EAAA0 /* Info.plist */,
+				1028549A29C37E1000AB0543 /* GoogleService-Info.plist */,
 			);
 			path = "FlashChat-IOS13-Angela";
 			sourceTree = "<group>";
@@ -208,6 +215,10 @@
 			dependencies = (
 			);
 			name = "FlashChat-IOS13-Angela";
+			packageProductDependencies = (
+				1028549D29C3804000AB0543 /* FirebaseAuth */,
+				1028549F29C3804000AB0543 /* FirebaseFirestore */,
+			);
 			productName = "FlashChat-IOS13-Angela";
 			productReference = 10703D7629C0DE8C000EAAA0 /* FlashChat-IOS13-Angela.app */;
 			productType = "com.apple.product-type.application";
@@ -236,6 +247,9 @@
 				Base,
 			);
 			mainGroup = 10703D6D29C0DE8C000EAAA0;
+			packageReferences = (
+				1028549C29C3804000AB0543 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 10703D7729C0DE8C000EAAA0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -251,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10703D8E29C0DF16000EAAA0 /* .gitignore in Resources */,
+				1028549B29C37E1000AB0543 /* GoogleService-Info.plist in Resources */,
 				108D715E29C0E6DD009571B5 /* RegisterViewController.xib in Resources */,
 				108D716629C0E6FE009571B5 /* ChatViewController.xib in Resources */,
 				10F4875C29C0F40000EE602A /* WelcomViewController.xib in Resources */,
@@ -340,7 +355,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -394,7 +409,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -490,6 +505,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1028549C29C3804000AB0543 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1028549D29C3804000AB0543 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1028549C29C3804000AB0543 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		1028549F29C3804000AB0543 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1028549C29C3804000AB0543 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 10703D6E29C0DE8C000EAAA0 /* Project object */;
 }
