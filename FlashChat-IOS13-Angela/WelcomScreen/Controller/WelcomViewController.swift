@@ -14,6 +14,7 @@ class WelcomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         logoLabel.text = K.appName
         appearanceAuthButton()
     }
@@ -22,6 +23,13 @@ class WelcomViewController: UIViewController {
         super.awakeFromNib()
         // уточнить почему не вызывается этот метод
         print("awakeFromNib")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.backgroundColor = nil
     }
 
     @IBAction func moveButtonPressed(_ sender: UIButton) {

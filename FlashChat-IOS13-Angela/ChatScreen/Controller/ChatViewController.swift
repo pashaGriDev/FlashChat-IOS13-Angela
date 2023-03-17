@@ -12,20 +12,76 @@ import FirebaseFirestore
 
 class ChatViewController: UIViewController {
     
+    @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
-    var messages: [Message] = [
-    Message(sender: "1@2.com", body: "Hi!"),
-    Message(sender: "a@b.com", body: "Hello!"),
-    Message(sender: "1@2.com", body: "What's up?")]
+    let db = Firestore.firestore()
+    
+    var messages: [Message] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // скрыть кнопку назад
         navigationItem.hidesBackButton = true
+        navigationController?.navigationBar.backgroundColor = UIColor(named: K.BrandColors.purple)
+        
         createLogOutBarButtonItem()
         setupTableView()
+        loadMessage()
+        // TODO: в поле messageTextField не вводятся текст на ру языке
+    }
+    
+    /// загружает данные с сообщениями из базы
+    func loadMessage() {
+        // order - позволяет упорядочить данные
+        // addSnapshotListener - слушатель который реагирует на изменения данных в базе
+        
+        db.collection(K.FStore.collectionName)
+            .order(by: K.FStore.dateField)
+            .addSnapshotListener { querySnapshot, error in
+                
+            self.messages = []
+                
+            if let error {
+                print(error.localizedDescription)
+                return
+            } else {
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for document in snapshotDocuments {
+                        let data = document.data()
+                        
+                        if let messageSender = data[K.FStore.senderField] as? String,
+                           let messageBody = data[K.FStore.bodyField] as? String {
+                            
+                            let newMessage = Message(sender: messageSender, body: messageBody)
+                            self.messages.append(newMessage)
+                            
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func sendButtonPressed(_ sender: UIButton) {
+        if let messageBody = messageTextField.text,
+           let messageSender = Auth.auth().currentUser?.email {
+            
+            db.collection(K.FStore.collectionName).addDocument(data: [
+                K.FStore.senderField : messageSender,
+                K.FStore.bodyField : messageBody,
+                K.FStore.dateField : Date().timeIntervalSince1970]) { error in
+                    if let error {
+                        print(error.localizedDescription)
+                    } else {
+                        print("Данные успешно сохранены")
+                    }
+            }
+        }
     }
 }
 
@@ -66,6 +122,4 @@ extension ChatViewController: UITableViewDataSource {
         cell.configure(text: text)
         return cell
     }
-    
-    
 }

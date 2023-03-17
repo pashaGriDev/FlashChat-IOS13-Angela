@@ -19,6 +19,8 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.blue)
+        
         // TODO: изменить цвет кнопки назад в навигатор контроллере
     }
     
