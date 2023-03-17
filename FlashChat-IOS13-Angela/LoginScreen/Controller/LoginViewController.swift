@@ -19,13 +19,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.text = "1@2.com"
         passwordTextField.text = "123456"
-        
-        // TODO: изменить цвет кнопки назад в навигатор контроллере
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.backgroundColor = nil
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {

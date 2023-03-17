@@ -29,7 +29,14 @@ class WelcomViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.backgroundColor = nil
+//        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.backgroundColor = UIColor(named: K.BrandColors.blue)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
 
     @IBAction func moveButtonPressed(_ sender: UIButton) {

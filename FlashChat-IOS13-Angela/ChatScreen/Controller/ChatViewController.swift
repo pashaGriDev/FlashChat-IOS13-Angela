@@ -24,7 +24,7 @@ class ChatViewController: UIViewController {
         
         // скрыть кнопку назад
         navigationItem.hidesBackButton = true
-        navigationController?.navigationBar.backgroundColor = UIColor(named: K.BrandColors.purple)
+//        navigationController?.navigationBar.backgroundColor = UIColor(named: K.BrandColors.purple)
         
         createLogOutBarButtonItem()
         setupTableView()
@@ -59,6 +59,9 @@ class ChatViewController: UIViewController {
                             
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
+                                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                                // скролл таблици к последней ячейке
+                                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                             }
                         }
                     }
@@ -78,7 +81,9 @@ class ChatViewController: UIViewController {
                     if let error {
                         print(error.localizedDescription)
                     } else {
-                        print("Данные успешно сохранены")
+                        DispatchQueue.main.async {
+                            self.messageTextField.text = ""
+                        }
                     }
             }
         }
@@ -118,8 +123,16 @@ extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! MessageViewCell
-        let text = messages[indexPath.row].body
-        cell.configure(text: text)
+        
+        let message = messages[indexPath.row]
+        let textBody = message.body
+        // проверка соответствует ли сообщение сообщению пользователя
+        if message.sender == Auth.auth().currentUser?.email {
+            cell.configure(text: textBody, IsCurrentUser: true)
+        } else {
+            cell.configure(text: textBody, IsCurrentUser: false)
+        }
+        
         return cell
     }
 }

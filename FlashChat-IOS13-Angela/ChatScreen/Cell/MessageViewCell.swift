@@ -19,11 +19,23 @@ class MessageViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        messageBubbleView.layer.cornerRadius = messageBubbleView.frame.size.height / 5
+        messageBubbleView.layer.cornerRadius = messageBubbleView.frame.size.height / 2.5
     }
     
-    func configure(text: String) {
+    func configure(text: String, IsCurrentUser: Bool) {
         messageLabel.text = text
+        
+        if IsCurrentUser {
+            rightImageView.isHidden = false
+            leftImageView.isHidden = true
+            messageBubbleView.backgroundColor = UIColor(named: K.BrandColors.lightPurple)
+            messageLabel.textColor = UIColor(named: K.BrandColors.purple)
+        } else {
+            rightImageView.isHidden = true
+            leftImageView.isHidden = false
+            messageBubbleView.backgroundColor = UIColor(named: K.BrandColors.purple)
+            messageLabel.textColor = UIColor(named: K.BrandColors.lightPurple)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
