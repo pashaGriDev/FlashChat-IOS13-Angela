@@ -6,6 +6,10 @@
 //
 
 import UIKit
+//import Firebase
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
     
@@ -19,12 +23,19 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
-        print("registerButtonPressed")
-        let email = emailTextField.text ?? "not value"
-        let password = passwordTextField.text ?? "not value"
-        print("\(email) : \(password)")
-        
-        let chatViewController = ChatViewController()
-        navigationController?.pushViewController(chatViewController, animated: true)
+
+        if let email = emailTextField.text,
+           let password = passwordTextField.text {
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if let error {
+                    // выдает ошибку на языке устройства
+                    // можно потом сделать алерт
+                    print(error.localizedDescription)
+                } else {
+                    let chatViewController = ChatViewController()
+                    self.navigationController?.pushViewController(chatViewController, animated: true)
+                }
+            }
+        }
     }
 }

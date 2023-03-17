@@ -14,7 +14,7 @@ class WelcomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        logoLabel.text = "Flash⚡️Chat"
+        logoLabel.text = K.appName
         appearanceAuthButton()
     }
     

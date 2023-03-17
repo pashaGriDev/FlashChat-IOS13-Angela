@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -14,17 +17,26 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.text = "1@2.com"
+        passwordTextField.text = "123456"
         
         // TODO: изменить цвет кнопки назад в навигатор контроллере
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        print("registerButtonPressed")
-        let email = emailTextField.text ?? "not value"
-        let password = passwordTextField.text ?? "not value"
-        print("\(email) : \(password)")
-        
-        let chatViewController = ChatViewController()
-        navigationController?.pushViewController(chatViewController, animated: true)
+        if let email = emailTextField.text,
+           let password = passwordTextField.text {
+            Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+              guard let self = self else { return }
+                if let error {
+                    // выдает ошибку на языке устройства
+                    // можно потом сделать алерт
+                    print(error.localizedDescription)
+                } else {
+                    let chatViewController = ChatViewController()
+                    self.navigationController?.pushViewController(chatViewController, animated: true)
+                }
+            }
+        }
     }
 }

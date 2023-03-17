@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,36 +12,35 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatViewController" customModule="FlashChat_IOS13_Angela" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="Huo-bm-omY" id="ewf-ba-W7V"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="Chat">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0pP-mj-cig">
-                    <rect key="frame" x="20" y="406" width="353" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="VQy-NL-ixo"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Huo-bm-omY">
+                    <rect key="frame" x="0.0" y="59" width="393" height="626"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="BrandPurple"/>
             <constraints>
-                <constraint firstItem="0pP-mj-cig" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="AxI-Rb-kpa"/>
-                <constraint firstItem="0pP-mj-cig" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="J3I-eG-6Wm"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0pP-mj-cig" secondAttribute="trailing" constant="20" id="UtX-s9-jrL"/>
-                <constraint firstItem="0pP-mj-cig" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lc5-Rb-sQS"/>
+                <constraint firstItem="Huo-bm-omY" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="0DU-h9-KS3"/>
+                <constraint firstItem="Huo-bm-omY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Pvc-4N-s9p"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Huo-bm-omY" secondAttribute="bottom" constant="133" id="Yry-b8-7vd"/>
+                <constraint firstItem="Huo-bm-omY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="doG-hS-Gdd"/>
             </constraints>
             <point key="canvasLocation" x="130.53435114503816" y="-12.67605633802817"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="BrandPurple">
+            <color red="0.67500001192092896" green="0.43500000238418579" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
