@@ -28,10 +28,15 @@ class WelcomViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named: K.BrandColors.blue)
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
         navigationController?.navigationBar.tintColor = .white
 //        navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.isHidden = true
-        navigationController?.navigationBar.backgroundColor = UIColor(named: K.BrandColors.blue)
+//        navigationController?.navigationBar.backgroundColor = UIColor(named: K.BrandColors.blue)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

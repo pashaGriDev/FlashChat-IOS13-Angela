@@ -19,9 +19,17 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.blue)
-        
         // TODO: изменить цвет кнопки назад в навигатор контроллере
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named: K.BrandColors.lighBlue)
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.blue)
     }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {

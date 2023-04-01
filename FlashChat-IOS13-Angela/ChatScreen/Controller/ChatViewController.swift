@@ -22,14 +22,22 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // скрыть кнопку назад
-        navigationItem.hidesBackButton = true
-//        navigationController?.navigationBar.backgroundColor = UIColor(named: K.BrandColors.purple)
-        
         createLogOutBarButtonItem()
         setupTableView()
         loadMessage()
         // TODO: в поле messageTextField не вводятся текст на ру языке
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // скрыть кнопку назад
+        navigationItem.hidesBackButton = true
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named: K.BrandColors.purple)
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     /// загружает данные с сообщениями из базы
